@@ -363,6 +363,12 @@ const formatDate = (iso) => {
 	background: #050509;
 }
 
+:global(*),
+:global(*::before),
+:global(*::after) {
+	box-sizing: border-box;
+}
+
 /* 全体背景：グレー寄りの強めグラデーション */
 .app {
 	min-height: 100vh;
@@ -496,6 +502,7 @@ const formatDate = (iso) => {
 	color: #f9fafb;
 	transition: border-color 0.15s ease, box-shadow 0.15s ease,
 		background-color 0.15s;
+	box-sizing: border-box;
 }
 
 .input.small {
@@ -624,6 +631,7 @@ const formatDate = (iso) => {
 	background: rgba(15, 23, 42, 0.96);
 	color: #e5e7eb;
 	font-size: 0.85rem;
+	box-sizing: border-box;
 }
 
 /* コメントカード */
@@ -674,6 +682,7 @@ const formatDate = (iso) => {
 	display: flex;
 	align-items: center;
 	gap: 12px;
+	flex-wrap: wrap;
 }
 
 .avatar {
@@ -684,6 +693,7 @@ const formatDate = (iso) => {
 
 .comment-author {
 	flex-grow: 1;
+	min-width: 0;
 }
 
 .author-name {
@@ -711,6 +721,8 @@ const formatDate = (iso) => {
 	line-height: 1.6;
 	font-size: 0.9rem;
 	color: #e5e7eb;
+	word-break: break-word;
+	overflow-wrap: anywhere;
 }
 
 /* ページネーション */
@@ -823,6 +835,119 @@ const formatDate = (iso) => {
 	.btn.ghost {
 		width: 100%;
 		justify-content: center;
+	}
+}
+
+@media (max-width: 960px) {
+	.hero {
+		padding: 24px 12px 20px;
+	}
+
+	.hero-text {
+		max-width: none;
+	}
+
+	.main {
+		padding: 0 12px 28px;
+	}
+
+	.card {
+		padding: 18px 18px;
+	}
+
+	.controls {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.comment-header {
+		align-items: flex-start;
+	}
+
+	.likes {
+		margin-left: auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.hero {
+		text-align: center;
+		padding: 24px 12px;
+	}
+
+	.hero-text {
+		margin: 0 auto;
+	}
+
+	.hero-actions {
+		justify-content: center;
+	}
+
+	.btn-row {
+		flex-direction: column;
+	}
+
+	.btn,
+	.btn.ghost {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.controls {
+		gap: 10px;
+	}
+
+	.comment-item {
+		padding: 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	.hero-title {
+		font-size: 1.4rem;
+	}
+
+	.hero-sub {
+		font-size: 0.85rem;
+		line-height: 1.45;
+	}
+
+	.card-title {
+		font-size: 1rem;
+	}
+
+	.input,
+	.select {
+		font-size: 0.85rem;
+	}
+
+	.btn-row {
+		flex-direction: column;
+	}
+
+	.btn,
+	.btn.ghost {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.comment-item {
+		padding: 10px;
+	}
+
+	.comment-header {
+		gap: 8px;
+	}
+
+	.likes {
+		width: 100%;
+		text-align: right;
+		margin-top: 4px;
+	}
+
+	.pagination {
+		flex-wrap: wrap;
+		gap: 8px;
 	}
 }
 </style>

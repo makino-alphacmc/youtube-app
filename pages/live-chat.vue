@@ -310,6 +310,12 @@ const formatOffset = (seconds) => {
 	background: #050509;
 }
 
+:global(*),
+:global(*::before),
+:global(*::after) {
+	box-sizing: border-box;
+}
+
 /* 全体背景：グレー寄りの強めグラデーション */
 .app {
 	min-height: 100vh;
@@ -451,6 +457,7 @@ const formatOffset = (seconds) => {
 	color: #f9fafb;
 	transition: border-color 0.15s ease, box-shadow 0.15s ease,
 		background-color 0.15s;
+	box-sizing: border-box;
 }
 
 .input.small {
@@ -590,6 +597,7 @@ const formatOffset = (seconds) => {
 	display: flex;
 	align-items: center;
 	gap: 10px;
+	flex-wrap: wrap;
 }
 
 .offset-badge {
@@ -631,6 +639,8 @@ const formatOffset = (seconds) => {
 	font-size: 0.9rem;
 	line-height: 1.6;
 	color: #e5e7eb;
+	word-break: break-word;
+	overflow-wrap: anywhere;
 }
 
 /* 下部ボタン */
@@ -726,6 +736,99 @@ const formatOffset = (seconds) => {
 	.hero-actions {
 		flex-direction: column;
 		align-items: flex-start;
+	}
+}
+
+@media (max-width: 960px) {
+	.hero {
+		padding: 24px 12px 20px;
+	}
+
+	.main {
+		padding: 0 12px 28px;
+	}
+
+	.card {
+		padding: 18px 18px;
+	}
+
+	.btn-row {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.btn,
+	.btn.ghost {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.chat-header {
+		align-items: flex-start;
+	}
+
+	.offset-badge {
+		order: -1;
+	}
+}
+
+@media (max-width: 768px) {
+	.hero {
+		text-align: center;
+		padding: 24px 12px;
+	}
+
+	.hero-actions {
+		justify-content: center;
+	}
+
+	.card {
+		padding: 16px 16px;
+	}
+
+	.btn-row {
+		gap: 8px;
+	}
+
+	.status,
+	.count {
+		text-align: center;
+	}
+}
+
+@media (max-width: 480px) {
+	.hero-title {
+		font-size: 1.4rem;
+	}
+
+	.hero-sub {
+		font-size: 0.85rem;
+		line-height: 1.45;
+	}
+
+	.card-title {
+		font-size: 1rem;
+	}
+
+	.input,
+	.select {
+		font-size: 0.85rem;
+	}
+
+	.chat-item {
+		padding: 8px 10px;
+	}
+
+	.chat-header {
+		gap: 8px;
+	}
+
+	.status {
+		font-size: 0.8rem;
+	}
+
+	.count {
+		text-align: left;
 	}
 }
 </style>

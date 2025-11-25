@@ -377,6 +377,12 @@ const filteredCount = computed(() => displayVideos.value.length)
 	background: #050509;
 }
 
+:global(*),
+:global(*::before),
+:global(*::after) {
+	box-sizing: border-box;
+}
+
 /* 全体背景：グレー寄りの強めグラデーション */
 .app {
 	min-height: 100vh;
@@ -510,6 +516,7 @@ const filteredCount = computed(() => displayVideos.value.length)
 	color: #f9fafb;
 	transition: border-color 0.15s ease, box-shadow 0.15s ease,
 		background-color 0.15s;
+	box-sizing: border-box;
 }
 
 .input.small {
@@ -634,6 +641,7 @@ const filteredCount = computed(() => displayVideos.value.length)
 	background: rgba(15, 23, 42, 0.96);
 	color: #e5e7eb;
 	font-size: 0.85rem;
+	box-sizing: border-box;
 }
 
 /* TOP10 リスト */
@@ -664,6 +672,7 @@ const filteredCount = computed(() => displayVideos.value.length)
 		rgba(15, 23, 42, 0.92)
 	);
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 /* transition-group 用 */
@@ -718,6 +727,8 @@ const filteredCount = computed(() => displayVideos.value.length)
 	font-weight: 600;
 	text-decoration: none;
 	color: #f9fafb;
+	word-break: break-word;
+	overflow-wrap: anywhere;
 }
 
 .video-title:hover {
@@ -728,6 +739,8 @@ const filteredCount = computed(() => displayVideos.value.length)
 	margin-top: 4px;
 	font-size: 0.85rem;
 	color: #cbd5f5;
+	word-break: break-word;
+	overflow-wrap: anywhere;
 }
 
 .video-meta .strong {
@@ -822,6 +835,115 @@ const filteredCount = computed(() => displayVideos.value.length)
 	.btn.ghost {
 		width: 100%;
 		justify-content: center;
+	}
+}
+
+@media (max-width: 960px) {
+	.hero {
+		padding: 24px 12px 20px;
+	}
+
+	.main {
+		padding: 0 12px 28px;
+	}
+
+	.card {
+		padding: 18px 18px;
+	}
+
+	.controls {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.btn-row {
+		flex-wrap: wrap;
+	}
+
+	.btn,
+	.btn.ghost {
+		flex: 1;
+		justify-content: center;
+	}
+
+	.video-item {
+		align-items: flex-start;
+	}
+
+	.video-info {
+		width: 100%;
+	}
+}
+
+@media (max-width: 768px) {
+	.hero {
+		text-align: center;
+		padding: 24px 12px;
+	}
+
+	.hero-actions {
+		justify-content: center;
+	}
+
+	.card {
+		padding: 16px 16px;
+	}
+
+	.btn-row {
+		flex-direction: column;
+	}
+
+	.btn,
+	.btn.ghost {
+		width: 100%;
+	}
+
+	.controls {
+		gap: 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	.hero-title {
+		font-size: 1.4rem;
+	}
+
+	.hero-sub {
+		font-size: 0.85rem;
+		line-height: 1.45;
+	}
+
+	.card-title {
+		font-size: 1rem;
+	}
+
+	.input,
+	.select {
+		font-size: 0.85rem;
+	}
+
+	.btn-row {
+		flex-direction: column;
+	}
+
+	.btn,
+	.btn.ghost {
+		width: 100%;
+	}
+
+	.thumb {
+		width: 100%;
+		height: auto;
+	}
+
+	.rank-badge {
+		width: 26px;
+		height: 26px;
+		font-size: 0.8rem;
+	}
+
+	.count {
+		text-align: left;
 	}
 }
 </style>
