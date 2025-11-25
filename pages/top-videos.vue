@@ -1,5 +1,6 @@
 <template>
 	<div class="app">
+		<MainMenu />
 		<header class="hero">
 			<div class="hero-inner">
 				<div class="hero-text">
@@ -174,8 +175,8 @@
 import { ref, computed } from 'vue'
 import { NuxtLink } from '#components'
 
-// youtube data APIキー（ローカル用）
-const apiKey = 'AIzaSyByrdYL7fducADQbNf_1CVXp2muhroW690'
+const runtimeConfig = useRuntimeConfig()
+const apiKey = runtimeConfig.public.youtubeApiKey || ''
 
 const videoId = ref('')
 const topVideos = ref([])
@@ -214,6 +215,10 @@ const clearAll = () => {
 const fetchTopVideos = async () => {
 	if (!videoId.value) {
 		errorMessage.value = 'Video ID を入力してください'
+		return
+	}
+	if (!apiKey) {
+		errorMessage.value = '環境変数 YOUTUBE_API_KEY が設定されていません'
 		return
 	}
 

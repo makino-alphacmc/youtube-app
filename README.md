@@ -4,6 +4,8 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 ## Setup
 
+### 1. Install dependencies
+
 Make sure to install dependencies:
 
 ```bash
@@ -19,6 +21,17 @@ yarn install
 # bun
 bun install
 ```
+
+### 2. Configure API keys
+
+Create a `.env` file based on `.env.example` and set your YouTube Data API key:
+
+```bash
+cp .env.example .env
+echo "YOUTUBE_API_KEY=your_key_here" >> .env
+```
+
+> **Security note:** Never commit the actual `.env` file. If you previously pushed a repository that contained a hardcoded key, revoke it in Google Cloud Console and issue a new one before continuing.
 
 ## Development Server
 

@@ -1,5 +1,6 @@
 <template>
 	<div class="app">
+		<MainMenu />
 		<header class="hero">
 			<div class="hero-inner">
 				<div class="hero-text">
@@ -138,7 +139,8 @@
 import { ref, computed } from 'vue'
 import { NuxtLink } from '#components'
 
-const apiKey = 'AIzaSyByrdYL7fducADQbNf_1CVXp2muhroW690'
+const runtimeConfig = useRuntimeConfig()
+const apiKey = runtimeConfig.public.youtubeApiKey || ''
 
 const videoId = ref('')
 const liveChatId = ref('')
@@ -164,6 +166,9 @@ const fetchJson = async (baseUrl, paramsObj) => {
 
 // videoId → activeLiveChatId を取得
 const resolveLiveChatId = async (vid) => {
+	if (!apiKey) {
+		throw new Error('環境変数 YOUTUBE_API_KEY が設定されていません')
+	}
 	const data = await fetchJson('https://www.googleapis.com/youtube/v3/videos', {
 		key: apiKey,
 		part: 'liveStreamingDetails',
@@ -182,6 +187,9 @@ const resolveLiveChatId = async (vid) => {
 
 // liveChatMessages を取得
 const callLiveChatApi = async (options = {}) => {
+	if (!apiKey) {
+		throw new Error('環境変数 YOUTUBE_API_KEY が設定されていません')
+	}
 	const params = {
 		key: apiKey,
 		part: 'snippet,authorDetails',
