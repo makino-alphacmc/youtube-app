@@ -1,10 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
-  runtimeConfig: {
-    public: {
-      youtubeApiKey: process.env.YOUTUBE_API_KEY || ''
-    }
-  }
+	compatibilityDate: '2025-07-15',
+	devtools: { enabled: true },
+	runtimeConfig: {
+		public: {
+			youtubeApiKey: process.env.YOUTUBE_API_KEY || '',
+		},
+	},
+	app: {
+		baseURL: '/youtube-app/',
+	},
+	nitro: {
+		preset: 'github_pages',
+	},
 })
