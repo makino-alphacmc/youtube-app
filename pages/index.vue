@@ -31,6 +31,8 @@
 </template>
 
 <script setup>
+import { NuxtLink } from '#components'
+
 const menuLinks = [
 	{
 		label: 'コメント一覧ビュー',
